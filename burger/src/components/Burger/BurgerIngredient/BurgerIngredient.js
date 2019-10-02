@@ -43,4 +43,4 @@ BurgerIngredient.propTypes = {
     types: PropTypes.string.isRequired
 };
 
-export default burgerIngredient;
+export default BurgerIngredient;
