@@ -5,6 +5,9 @@ import Backdrop from '../BackDrop/BackDrop';
 
 const modal = (props) => (
     <Aux>
+        <Backdrop 
+        show = {props.show}
+        purchasing = {props.purchasing} />
     <div className={classes.Modal}
         style ={{
             transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
@@ -12,9 +15,7 @@ const modal = (props) => (
         }}>
         {props.children}
     </div>
-    <Backdrop 
-        show = {props.show}
-        purchasing = {props.purchasing} />
+    
     </Aux>
 )
 
