@@ -1,4 +1,5 @@
 .NavigationItem {
+    background-color: #8F5C2C;
     margin: 0;
     box-sizing: border-box;
     display: flex;
@@ -7,7 +8,7 @@
 }
 
 .NavigationItem a {
-    color: white;
+    color: rgb(231, 231, 231);
     text-decoration: none;
     height: 100%;
     padding: 16px 10px;
