@@ -7,7 +7,7 @@ const modal = (props) => (
     <Aux>
         <Backdrop 
         show = {props.show}
-        purchasing = {props.purchasing} />
+        clicked = {props.purchasing} />
     <div className={classes.Modal}
         style ={{
             transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
