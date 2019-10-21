@@ -27,7 +27,6 @@ class BurgerBuilder extends Component {
         purchasable: false,
         purchasing:  false,
         loading: false,
-        counter: 1
     }
 
     purchaseHandler = () => {
@@ -85,7 +84,6 @@ class BurgerBuilder extends Component {
         const newCount = this.state.counter + 1
         this.setState({totalPrice:newPrice, ingredients: updatedIngredients, counter: newCount});
         this.updatePrechaseState(updatedIngredients)
-        console.log(this.state.counter)
     }
 
     removeIngredientHandler = (type) => {
