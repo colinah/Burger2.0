@@ -8,4 +8,4 @@ const order = (props) => (
     </div>
 )
 
-export default orders;
+export default order;
