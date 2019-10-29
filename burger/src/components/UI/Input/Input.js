@@ -32,7 +32,7 @@ const input = (props) => {
                             </select>
             break;
         default:
-            inputElement = <input 
+            inputElement = <input   
                 onChange = {props.change} 
                 className={classes.InputElement}
                 {...props.elementConfig}
