@@ -1,12 +1,13 @@
 .Button {
     background-color: transparent;
     border: none;
+    box-shadow: 2px 3px #ccc;
     color: white;
     outline: none;
     cursor: pointer;
     font: inherit;
     padding: 10px;
-    margin: 10px;
+    margin: 10px auto;
     font-weight: bold;
 }
 
@@ -14,7 +15,11 @@
     margin-left: 0;
     padding-left: 0;
 }
+.Button:disabled {
+    color: grey;
+    cursor: not-allowed;
 
+}
 .Success {
     color: #5C9210;
 }
