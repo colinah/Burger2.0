@@ -110,16 +110,16 @@ class ContactData extends Component {
     }
 
     checkValidationHandler(value,rules){
-        let isValid = false;
+        let isValid = true;
 
         if(rules.require){
-            isValid = value.trim() !== '';
+            isValid = value.trim() !== '' && isValid;
         }
         if(rules.minLength){
-            isValid = value.length >= rules.minLength
+            isValid = value.length >= rules.minLength  && isValid;
         }
         if(rules.maxLength){
-            isValid = value.length <= rules.maxLength
+            isValid = value.length <= rules.maxLength && isValid;
         }
         return isValid;
     }
@@ -132,10 +132,9 @@ class ContactData extends Component {
             ...updatedOrderForm[inputIdentifier]
         }
         updatedFormElement.value = event.target.value;
-        console.log(updatedFormElement)
         updatedFormElement.valid = this.checkValidationHandler(updatedFormElement.value,updatedFormElement.validation)
         updatedOrderForm[inputIdentifier] = updatedFormElement;
-        //console.log(updatedFormElement)
+        console.log(updatedFormElement)
         this.setState({orderForm:updatedOrderForm});
     }
 
@@ -153,6 +152,8 @@ class ContactData extends Component {
                     {formElementsArray.map(formElement => (
                         <Input 
                             key = {formElement.id}
+                            invalid = {!formElement.config.valid}
+                            shouldValidate = {formElement.config.validation}
                             elementType = {formElement.config.elementType}
                             elementConfig = {formElement.config.elementConfig}
                             value = {formElement.config.value}
