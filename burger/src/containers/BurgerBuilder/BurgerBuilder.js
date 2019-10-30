@@ -35,20 +35,7 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-        //alert('continue to purchase page insert here')
-        
-
-        const queryParams = [];
-        for(let i in this.state.ingredients){
-            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
-        }
-        queryParams.push('price=' + this.props.totalPrice)
-        const queryString = queryParams.join('&')
-        this.props.history.push({
-            pathname: '/checkout',
-            search: '&'+ queryString
-
-        })
+        this.props.history.push('/checkout')
     }
 
     updatePrechaseState = (ingredients) => {
@@ -61,35 +48,6 @@ class BurgerBuilder extends Component {
         }, 0)
         return sum>0
     }
-
-    // addIngredientHandler = (type) => {
-    //     const oldCount = this.state.ingredients[type];
-    //     const updatedCount = oldCount +1;
-    //     const updatedIngredients = {...this.state.ingredients};
-    //     updatedIngredients[type] = updatedCount
-    //     const priceAddition = INGREDIENT_PRICES[type];
-    //     const oldPrice = this.state.totalPrice;
-    //     const newPrice = oldPrice + priceAddition;
-    //     const newCount = this.state.counter + 1
-    //     this.setState({totalPrice:newPrice, ingredients: updatedIngredients, counter: newCount});
-    //     this.updatePrechaseState(updatedIngredients)
-    // }
-
-    // removeIngredientHandler = (type) => {
-    //     const oldCount = this.state.ingredients[type];
-    //     if(oldCount <= 0){
-    //         return;
-    //     }
-    //     const updatedCount = oldCount - 1;
-    //     const updatedIngredients = {...this.state.ingredients};
-    //     updatedIngredients[type] = updatedCount
-    //     const priceReduction = INGREDIENT_PRICES[type];
-    //     const oldPrice = this.state.totalPrice;
-    //     const newPrice = oldPrice - priceReduction;
-    //     this.setState({totalPrice: newPrice, ingredients: updatedIngredients})
-    //     this.updatePrechaseState(updatedIngredients)
-        
-    // }
 
     render() {
         const disabledInfo = {
