@@ -15,18 +15,6 @@ import * as burgerBuilderActions from '../../store/actions/index';
 class BurgerBuilder extends Component {
     state = {
         purchasing:  false,
-        loading: false,
-        error: false
-    }
-
-    componentDidMount(){
-        axios.get('https://burger-1e0b5.firebaseio.com/ingredients.json')
-            .then(response => {
-                this.setState({ingredients:response.data})
-            })
-            .catch(error => {
-                this.setState({error:true})
-            })
     }
 
     purchaseHandler = () => {
@@ -82,9 +70,6 @@ class BurgerBuilder extends Component {
                 cancel = {this.purchaseHandler}
                 continue = {this.purchaseContinueHandler}/>
             )
-        }
-        if(this.state.loading){
-            orderSummary = <Spinner />
         }
 
         return(
