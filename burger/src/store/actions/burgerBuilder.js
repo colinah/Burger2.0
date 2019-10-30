@@ -32,10 +32,10 @@ export const initIngredients = () => {
     return dispatch => {
         axios.get('https://burger-1e0b5.firebaseio.com/ingredients.json')
             .then(response => {
-                dispatch(setIngredients(response))
+                dispatch(setIngredients(response.data))
             })
             .catch(error => {
-                dispatch(FETCH_INGREDIENTS_FAILED())
+                dispatch(fetchIngredientsFailed())
             })
     }
 }
