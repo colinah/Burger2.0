@@ -1,12 +1,11 @@
 import * as actionTypes from '../actions/actionTypes';
 
-initialState = {
+const initialState = {
     orders: [],
     loading: false,
-
 }
 
-const reducer = ( state = initialState ,action) => {
+const reducer = ( state = initialState , action) => {
     switch (action.type) {
         case actionTypes.PURCHASE_BURGER_START:
             return {
@@ -29,6 +28,12 @@ const reducer = ( state = initialState ,action) => {
                 loading: false
 
             };
+        default: 
+            return{
+                ...state
+            }
 
     }
 }
+
+export default reducer
