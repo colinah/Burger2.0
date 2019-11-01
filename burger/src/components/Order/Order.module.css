@@ -5,4 +5,10 @@
     padding: 10px;
     margin: 10px auto;
     box-sizing: border-box;
+    display: inline;
+}
+
+.Order button {
+    padding-left: 6px;
+    display: inline-flex;
 }
