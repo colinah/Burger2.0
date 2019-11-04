@@ -1,0 +1,27 @@
+.Auth {
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    box-shadow: 3px 7px 9px #ccc;
+    border: 1px solid #d1cfcf;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.Auth input {
+    display: Block;
+}
+
+.Auth button {
+    margin: 10px auto;
+    width: 100px;
+    padding: 0;
+    display: inline-block;
+    line-height: 50px;
+    text-align: center;
+    border: 1px solid #d1cfcf;
+}
+@media (min-width: 600px) {
+    .Auth {
+        width: 500px
+    }
+}
