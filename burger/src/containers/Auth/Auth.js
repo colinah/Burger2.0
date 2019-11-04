@@ -52,7 +52,6 @@ state = {
 
     checkValidationHandler(value,rules){
         let isValid = true;
-        console.log(rules)
         if(!rules) {
             return true;
         }
@@ -74,7 +73,6 @@ state = {
     }
 
     inputChangeHandler = (event , controlName) => {
-        console.log(this.state.controls[controlName].validation)
         const updatedControls = {
             ...this.state.controls,
             [controlName]: {

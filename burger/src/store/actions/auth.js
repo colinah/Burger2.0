@@ -1,7 +1,6 @@
 import axios from 'axios';
-require('dotenv').config()
-
 import * as actiontypes from './actionTypes';
+
 
 export const authStart = () => {
     return {
@@ -9,10 +8,11 @@ export const authStart = () => {
     };
 };
 
-export const authSuccess = (authData) => {
+export const authSuccess = (idToken , userId) => {
     return {
         type: actiontypes.AUTH_SUCCESS,
-        authData: authData
+        token: idToken,
+        userId: userId
     };
 };
 
@@ -31,16 +31,16 @@ export const auth = (email, password, isSignup) => {
             password: password,
             returnSecureToken: true
         }
-        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + API_KEY;
+        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCjy4DlV0ZL7eBCvrQGEEKWuEeJBU8Ttgw';
         if(!isSignup){
-            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + API_KEY
+            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCjy4DlV0ZL7eBCvrQGEEKWuEeJBU8Ttgw'
 
         }
         console.log(authData)
         axios.post(url, authData)
         .then(response => {
             console.log(response);
-            dispatch(authSuccess(response.data));
+            dispatch(authSuccess(response.data.idToken , response.data.localId));
 
         })
         .catch(err => {
