@@ -6,7 +6,6 @@ const initialState = {
     totalPrice: 4,
     error: false,
     building: false,
-    authRedirectPath : '/'
 };
 
 const INGREDIENT_PRICES = {

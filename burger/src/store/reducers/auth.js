@@ -3,9 +3,10 @@ import { updateObject } from '../../shared/utility';
 
 const initialState = {
     token: null,
-    useId: null,
+    userId: null,
     error: null,
-    loading: false
+    loading: false,
+    authRedirectPath : '/'
 }
 
 
