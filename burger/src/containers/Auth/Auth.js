@@ -6,7 +6,7 @@ import Button from '../../components/UI/Button/Button';
 import classes from './Auth.module.css';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import * as actions from '../../store/actions/index';
-import { updateObject } from '../../shared/utility';
+import { updateObject , checkValidationHandler } from '../../shared/utility';
 
 
 
@@ -56,33 +56,13 @@ state = {
         })
     }
 
-    checkValidationHandler(value,rules){
-        let isValid = true;
-        if(!rules) {
-            return true;
-        }
-        if(rules.require) {
-            isValid = value.trim() !== '' && isValid;
-        }
-        if(rules.minLength) {
-            isValid = value.length >= rules.minLength  && isValid;
-        }
-        if(rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid;
-        }
-        if(rules.isEmail) { 
-            //eslint-disable-next-line
-            const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            isValid = pattern.test(value) && isValid;
-        }
-        return isValid;
-    }
+ 
 
     inputChangeHandler = (event , controlName) => {
         const updatedControls = updateObject(this.state.controls,{
             [controlName]: updateObject(this.state.controls[controlName],{
                 value: event.target.value,
-                valid: this.checkValidationHandler(event.target.value, this.state.controls[controlName].validation),
+                valid: checkValidationHandler(event.target.value, this.state.controls[controlName].validation),
                 touched: true
             })
         });

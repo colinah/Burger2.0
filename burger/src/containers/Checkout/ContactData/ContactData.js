@@ -7,7 +7,7 @@ import axios from '../../../axios-orders';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import * as actions from '../../../store/actions/index';
-import {updateObject} from '../../../shared/utility';
+import {updateObject , checkValidationHandler} from '../../../shared/utility';
 
 class ContactData extends Component {
     state = {
@@ -74,7 +74,8 @@ class ContactData extends Component {
                 },
                 value: '',
                 validation: {
-                    require: true
+                    required: true,
+                    isEmail: true
                 },
                 valid: false,
                 touched: false
@@ -112,28 +113,11 @@ class ContactData extends Component {
         this.props.onOrderBurger(order,this.props.token);
     }
 
-    checkValidationHandler(value,rules){
-        let isValid = true;
-        if(!rules) {
-            return true;
-        }
-        if(rules.require){
-            isValid = value.trim() !== '' && isValid;
-        }
-        if(rules.minLength){
-            isValid = value.length >= rules.minLength  && isValid;
-        }
-        if(rules.maxLength){
-            isValid = value.length <= rules.maxLength && isValid;
-        }
-        return isValid;
-    }
-
     inputChangeHandler = (event,inputIdentifier) => {
 
         const updatedFormElement = updateObject(this.state.orderForm[inputIdentifier],{
             value: event.target.value,
-            valid: this.checkValidationHandler(event.target.value,this.state.orderForm[inputIdentifier].validation),
+            valid: checkValidationHandler(event.target.value,this.state.orderForm[inputIdentifier].validation),
             touched: true
         });
 
